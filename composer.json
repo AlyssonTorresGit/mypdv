@@ -1,6 +1,6 @@
 {
-    "name": "ronaldo/mypdv",
-    "description": "projeto desenvolvido no curso de desenvolvimento web full stack",
+    "name": "alysson/mypdv",
+    "description": "projeto de pdvweb para o curso de desenvolvimento web",
     "type": "project",
     "license": "MIT",
     "autoload": {
@@ -10,12 +10,8 @@
     },
     "authors": [
         {
-            "name": "ronaldo leite"
+            "name": "alysson torres"
         }
     ],
-    "require": {
-        "dompdf/dompdf": "^3.1",
-        "phpoffice/phpspreadsheet": "^2.1"
-
-    }
+    "require": {}
 }
