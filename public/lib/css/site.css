@@ -1,90 +1,13 @@
-.home .box-6 {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-/* PAGINA DE VENDAS */
-.main-car {
+.home{
+     background-image: url("../img/bg/home-bg-blue2.jpg");
+    background-repeat: no-repeat;   /* não repetir */
+    background-size: cover;        /* cobre 100% da tela */
+    background-position: center;   /* centraliza a imagem */
+    height: 100vh;                 /* ocupa 100% da altura da janela */
     width: 100%;
-    height: 100vh;
-    display: flex;
 }
-.left-painel{
-    flex:3;
-    display: flex;
-    padding: 20px;
-    flex-direction: column;    
-}
-.top-inputs{
-    gap:15px;
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.item-list{
-    flex:1;
-    padding: 10px;
-    overflow-y: auto;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-}
-.itens{
-    display: flex;
-    justify-content: space-around;
-    padding:12px;
-    border-bottom: 1px solid #e0e0f0;
-}
-
-.right-painel{
-    flex:1.5;
-    display: flex;
-    padding: 20px;
-    flex-direction: column;  
-    justify-content: space-between;  
-    border-left: 8px solid #21ec3c;
-}
-.right-painel .total{
-     width: 100%;
-     height: 60px;
-     border-radius: 10px;
-     border: 2px solid #fff;
-     text-align: center;
-     font-size: 35px;
-}
-.right-painel  button{
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
-    background-color: #e0e0f0;
-    border: none;
-}
-.atalhos, .acoes{
-  padding: 20px;
-  margin-bottom: 40px;
-}
-/* ================================
-             MODAL PDV  
-=================================== */
-.modal {
-    /* display: none; */
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(17, 4, 101, 0.5);
-    padding-top: 80px;
-}
-
-.lista-produto-modal {
-    width: 60%;
-    height: 600px;
-    padding: 30px;
-    margin: auto;
-    max-height: 600px;
-    border-radius: 10px;
-}
-input[type="file"]{
-    display:none;
+.login{
+    border: 2px solid #fff;
+    background-color: rgba(255,255,255, .1);
+    margin-top: 250px;
 }

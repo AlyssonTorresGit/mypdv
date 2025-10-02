@@ -6,7 +6,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
 }
 html {
@@ -965,6 +965,11 @@ select {
     transition: .15s ease-in-out;
 }
 /* PALETA DE CORES background */
+.bg-verde{
+    background-color: #3cc47c;
+    transition: .15s esse-in-out;
+}
+
 .bg-branco{  
     background-color: #ffffff;
     transition: .15s ease-in-out;
