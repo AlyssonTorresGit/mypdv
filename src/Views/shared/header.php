@@ -4,11 +4,6 @@ ob_start();
 if (!isset($_SESSION)):
     session_start();
 endif;
-// require_once __DIR__ . "/../../Configurations/Formater.php";
-
-// use App\Configurations\Formater;
-
-// $formater = new Formater();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,11 +13,11 @@ endif;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My pdv - sistema de gestão de vendas</title>
     <!-- carregando arquivos java scripts -->
-    <script type="text/javascript" src="<?= BASE_URL ?>lib/js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>lib/js/animacoes.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>lib/js/ajax.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>lib/js/validacao.js"></script>
-    <script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+    <script type="text/javascript" src="lib/js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="lib/js/animacoes.js"></script>
+    <script type="text/javascript" src="lib/js/ajax.js"></script>
+    <script type="text/javascript" src="lib/js/validacao.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 
 
     <!-- carregando fontawesome -->
@@ -39,9 +34,9 @@ endif;
 
     <!-- CARREGANDO CSS -->
     <link rel="stylesheet" href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>lib/css/menu.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>lib/css/aurora.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>lib/css/site.css">
+    <link rel="stylesheet" href="lib/css/menu.css">
+    <link rel="stylesheet" href="lib/css/aurora.css">
+    <link rel="stylesheet" href="lib/css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 </head>

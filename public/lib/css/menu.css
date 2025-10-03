@@ -5,8 +5,53 @@
     height: 100vh;
     background-color: #f3f4f6;
   }
+  .cabec{
+    width: 100%;
+    height: 80px;
+    background-color: #1f2937;
+  }
+  #sidebar {
+    width: 250px;
+    background: #162133;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 10px;
+}
+/* Sidebar normal */
+#sidebar {
+    width: 250px;
+    transition: width 0.3s;
+}
+
+/* Sidebar colapsado */
+#sidebar.collapsed {
+    width: 60px; /* só ícones */
+}
+
+/* Conteúdo normal */
+main {
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+}
+
+/* Conteúdo quando sidebar colapsa */
+#sidebar.collapsed ~ main {
+    margin-left: 60px;
+}
+
+
+/* Conteúdo principal */
+main {
+    margin-left: 250px;   /* mesmo valor da largura do sidebar */
+    padding: 20px;
+    width: calc(100% - 250px); /* ocupa o resto da tela */
+}
+
   aside {
-    background-color: rgb(73, 75, 245);
+    background-color: #1f2937;
     color: #fff;
     width: 260px;
     padding: 20px;

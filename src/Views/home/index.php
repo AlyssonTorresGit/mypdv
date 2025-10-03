@@ -1,6 +1,6 @@
 <?php
 define('BASE_URL', 'http://localhost:5100/');
-require_once "header.php";
+require_once "../src/Views/shared/header.php";
 ?>
 <section class="home hg-full">
     <div class="container flex justify-center">
