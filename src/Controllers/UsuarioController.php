@@ -126,67 +126,16 @@ class UsuarioController extends BaseController
     }
     public function alterarStatus($id, $status)
     {
-        // Pega os valores de GET se não foram passados como parâmetro
-        $id = $id ?? $_GET['id'] ?? null;
-        $ativo = $_GET['ATIVO'] ?? null;
-
-        if ($id) {
-
-
-            // if ($id && in_array($status, ['0', '1'])) {
-            //     $usuario = new Usuario($id, "", "", "", "", "", $ativo);
-            //     $this->usuarioDao->alterar($usuario);
-            //     echo json_encode(['success' => true]);
-            // } else {
-            //     http_response_code(400);
-            //     echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
-            // }
-        }
-    }
-    //     public function alterarStatus($id = null, $status = null)
-    // {
-    //     // Pega os valores de GET se não foram passados como parâmetro
-    //     $id = $id ?? $_GET['id'] ?? null;
-    //     $status = $status ?? $_GET['ATIVO'] ?? null;
-
-    //     // Validação básica
-    //     if (!$id || !is_numeric($id) || !in_array($status, ['0', '1'])) {
-    //         http_response_code(400);
-    //         echo json_encode([
-    //             'success' => false,
-    //             'message' => 'Dados inválidos'
-    //         ]);
-    //         return;
-    //     }
-
-    //     // Busca o usuário existente (opcional, mas recomendado)
-    //     $usuario = $this->usuarioDao->obterPorId($id);
-    //     if (!$usuario) {
-    //         http_response_code(404);
-    //         echo json_encode([
-    //             'success' => false,
-    //             'message' => 'Usuário não encontrado'
-    //         ]);
-    //         return;
-    //     }
-
-    //     // Atualiza apenas o campo de status/ativo
-    //     $usuario->ATIVO = $status;
-    //     $this->usuarioDao->alterar($usuario);
-
-    //     // Retorna resposta JSON
-    //     echo json_encode([
-    //         'success' => true,
-    //         'message' => 'Status atualizado com sucesso',
-    //         'id' => $id,
-    //         'status' => $status
-    //     ]);
-    // }
-
-
-    public function logout()
-    {
-        session_destroy();
-        header("location:/");
+        if ($id) :
+            $usuario = new Usuario($id, "", "", "", "", "", $status);
+            $this->usuarioDao->alterar($usuario);
+        endif;
     }
 }
+
+//     public function logout()
+//     {
+//         session_destroy();
+//         header("location:/");
+//     }
+// }
