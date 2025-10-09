@@ -4,6 +4,11 @@ ob_start();
 if (!isset($_SESSION)):
     session_start();
 endif;
+
+use App\Configurations\Formater;
+
+$formater = new Formater();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

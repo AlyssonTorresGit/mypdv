@@ -1,4 +1,3 @@
-<?php require_once __DIR__ . "/../shared/header.php"; ?>
 <div class="box-12 mg-t-2">
     <h2 class=" poppins-medium fw-300 fonte22 fnc-preto-azulado">
         <i class="fa-solid fa-bag-shopping mg-r-1 fonte22 fnc-preto-azulado"></i>
