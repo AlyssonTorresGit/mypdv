@@ -25,7 +25,7 @@
             <span>Clientes</span>
         </a>
 
-        <a href="/listar-usuarios">
+        <a href="/listar-usuario">
             <i class="fas fa-user fonte14"></i>
             <span>Usuarios</span>
         </a>
