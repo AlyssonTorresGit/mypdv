@@ -13,6 +13,7 @@ abstract class Notifications
     // Gera uma mensagem de sucesso e a retorna como string
     protected function success($mensagem, $retorno)
     {
+        teste
         $css = $this->getCssLink();
         $mensagem = sprintf(
             "%s<div class='aviso'>
