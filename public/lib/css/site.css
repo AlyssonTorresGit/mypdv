@@ -1,13 +1,4 @@
-.home{
-     background-image: url("../img/bg/home-bg-blue2.jpg");
-    background-repeat: no-repeat;   /* não repetir */
-    background-size: cover;        /* cobre 100% da tela */
-    background-position: center;   /* centraliza a imagem */
-    height: 100vh;                 /* ocupa 100% da altura da janela */
-    width: 100%;
-}
-.login{
-    border: 2px solid #fff;
-    background-color: rgba(255,255,255, .1);
-    margin-top: 250px;
+.home .box-6{
+  margin-left: 0;
+  margin-right: 0;  
 }

@@ -98,15 +98,11 @@ class UsuarioController extends BaseController
     // Confirmação de exclusão de usuário
     public function deleteConfirm($id)
     {
-        $id = $_GET['id'] ?? null;
+
         if ($id) {
             $this->usuarioDao->excluir($id);
-            echo $this->Success("Usuario excuido com sucesso! deleteConfirm", "/listar-usuario");
+            echo $this->Confirm("deseja realmente excluir", "/excluir-usuario/{$id}", "/listar-usuario");
         }
-
-        // if ($id) {
-        //     echo $this->Confirm("Deseja realmente excluir este usuario?", "/excluir-usuario/{$id}", "/listar-usuario");
-        // }
 
         require_once __DIR__ . "/../Views/shared/header.php";
     }
@@ -114,11 +110,10 @@ class UsuarioController extends BaseController
     // Função responsável por excluir um usuário
     public function excluir($id)
     {
-        $id = $_GET['id'] ?? null;
 
         if ($id) {
             $this->usuarioDao->excluir($id); // aqui é realmente a exclusão
-            echo $this->Success("Usuario excuido com sucesso! excluir",  "/listar-usuario");
+            echo $this->Success("Usuario excui do com sucesso! excluir",  "/listar-usuario");
             // echo $this->Success("Usuario excluido com sucesso!", "/listar-usuario");
         }
 
