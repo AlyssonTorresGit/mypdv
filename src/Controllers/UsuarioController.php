@@ -118,16 +118,23 @@ class UsuarioController extends BaseController
     }
     public function alterarStatus($id, $status)
     {
-        if ($id) :
-            $usuario = new Usuario($id, "", "", "", "", "", $status);
-            $this->usuarioDao->alterar($usuario);
-        endif;
+        // if ($id && in_array($status, ['0', '1'])) {
+        //     $usuario = new Usuario($id, "", "", "", "", "", "", $status);
+        //     $this->usuarioDao->alterar($usuario);
+        //     echo json_encode(['success' => true]);
+        // } else {
+        //     http_response_code(400);
+        //     echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
+            if ($id) :
+                $usuario = new Usuario($id, "", "", "", "", "", $status);
+                $this->usuarioDao->alterar($usuario);
+            endif;
+        }
     }
-}
 
-//     public function logout()
-//     {
-//         session_destroy();
-//         header("location:/");
-//     }
-// }
+    // public function logout()
+    // {
+    //     session_destroy();
+    //     header("location:/");
+    // }
+}
