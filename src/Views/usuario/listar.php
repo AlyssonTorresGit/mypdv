@@ -47,7 +47,7 @@ $formater = new Formater();
                                                                         endif; ?> </td>
                         <td class=" txt-c">
                             <span class="toggle-status" data-id="<?= $usuario->ID; ?>"
-                                data-status="<?= $usuario->ATIVO == '1' ? '0' : '1'; ?>" data-url="/alterar-status-usuario">
+                                data-status="<?= $usuario->ATIVO == '1' ? '0' : '1'; ?>" data-url="/alterar-status">
                                 <?php if ($usuario->ATIVO == '1'): ?>
                                     <i class="fa-solid fa-lock-open fonte12 fnc-sucesso"></i>
                                 <?php else: ?>

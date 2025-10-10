@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Dao;
+
 use App\core\Contexto;
 use App\Models\Usuario;
 
@@ -10,8 +11,9 @@ class UsuarioDao extends Contexto
     {
         return $this->listar('USUARIO');
     }
-    public function autenticar($usuario){
-        return $this->listar("USUARIO","WHERE USUARIO = '".$usuario."'"); 
+    public function autenticar($usuario)
+    {
+        return $this->listar("USUARIO", "WHERE USUARIO = '" . $usuario . "'");
     }
 
     public function obterPorId($id)
@@ -32,11 +34,9 @@ class UsuarioDao extends Contexto
         $valores = array_values($usuario->atributosPreenchidos());
         return $this->atualizar('USUARIO', $atributos, $valores, $usuario->getId());
     }
-    public function excluir($id)    
+    public function excluir($id)
     {
-       return $this->deletar('USUARIO', $id);
+        return $this->deletar('USUARIO', $id);
     }
-}
-{
-
+} {
 }

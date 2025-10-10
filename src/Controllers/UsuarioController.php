@@ -32,12 +32,11 @@ class UsuarioController extends BaseController
     {
         // Separação da responsabilidade de buscar os dados e exibir a view
         $usuarios = (new UsuarioDao())->ListarTodos();
-        $perfis = $this->perfilDao->listarTodos();
-        $perfis = (new PerfilDao())->listarTodos(); // ← carrega os perfis
+        // $perfis = $this->perfilDao->listarTodos();
+        // $perfis = (new PerfilDao())->listarTodos();
         // require_once "Views/painel/index.php";
         $this->render("usuario/listar", [
             "usuarios" => $usuarios,
-            "perfis" => $perfis
         ]);
     }
 
@@ -45,8 +44,13 @@ class UsuarioController extends BaseController
     public function index($id = null)
     {
         $method = $_SERVER["REQUEST_METHOD"];
-
+        $usuario = $this->usuarioDao->listarTodos();
         $perfis = $this->perfilDao->listarTodos();
+        $this->render("usuario/index", [
+            'usuarios' => $usuario,
+            'perfis' => $perfis
+        ]);
+
 
         if ($method === "GET" && $id) {
             $usuario = $this->usuarioDao->obterPorId($id);
@@ -61,11 +65,7 @@ class UsuarioController extends BaseController
             }
         }
         // Carrega todos os usuários para listar
-        $usuario = $this->usuarioDao->listarTodos();
-        $this->render("usuario/index", [
-            'usuarios' => $usuario,
-            'perfis' => $perfis
-        ]);
+
     }
 
     // Função responsável por inserir um usuário
@@ -98,43 +98,26 @@ class UsuarioController extends BaseController
     public function deleteConfirm($id)
     {
         if ($id) {
-            $this->usuarioDao->excluir($id);
             echo $this->Confirm("Deseja realmente excluir este usuario?", "/excluir-usuario/{$id}", "/listar-usuario");
         }
-        require_once __DIR__ . "/../Views/shared/header.php";
+        require_once "../src/Views/shared/header.php";
     }
 
     // Função responsável por excluir um usuário
+
     public function excluir($id)
     {
-
         if ($id) {
-            $this->usuarioDao->excluir($id); // aqui é realmente a exclusão
-            echo $this->Success("Usuario excluido com sucesso!",  "/listar-usuario");
-            // echo $this->Success("Usuario excluido com sucesso!", "/listar-usuario");
+            $this->usuarioDao->excluir($id);
+            echo $this->Success("Deseja realmente excluir esta usuario", "/listar-usuario");
         }
-
-        require_once __DIR__ . "/../Views/shared/header.php";
+        require_once "../src/Views/shared/header.php";
     }
     public function alterarStatus($id, $status)
     {
-        // if ($id && in_array($status, ['0', '1'])) {
-        //     $usuario = new Usuario($id, "", "", "", "", "", "", $status);
-        //     $this->usuarioDao->alterar($usuario);
-        //     echo json_encode(['success' => true]);
-        // } else {
-        //     http_response_code(400);
-        //     echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
-            if ($id) :
-                $usuario = new Usuario($id, "", "", "", "", "", $status);
-                $this->usuarioDao->alterar($usuario);
-            endif;
-        }
+        if ($id):
+            $usuario = new Usuario($id, "", "", "", "", "", $ativo);
+            $this->usuarioDao->alterar($usuario);
+        endif;
     }
-
-    // public function logout()
-    // {
-    //     session_destroy();
-    //     header("location:/");
-    // }
 }
