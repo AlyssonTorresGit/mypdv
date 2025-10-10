@@ -32,15 +32,25 @@ class UsuarioController extends BaseController
     {
         // Separação da responsabilidade de buscar os dados e exibir a view
         $usuarios = (new UsuarioDao())->ListarTodos();
-        $this->render("usuario/listar", ["usuarios" => $usuarios]);
+        // $perfis = $this->perfilDao->listarTodos();
+        // $perfis = (new PerfilDao())->listarTodos();
+        // require_once "Views/painel/index.php";
+        $this->render("usuario/listar", [
+            "usuarios" => $usuarios,
+        ]);
     }
 
     // Função principal de gerenciamento de usuários (inserção, alteração e listagem)
     public function index($id = null)
     {
         $method = $_SERVER["REQUEST_METHOD"];
-
+        $usuario = $this->usuarioDao->listarTodos();
         $perfis = $this->perfilDao->listarTodos();
+        $this->render("usuario/index", [
+            'usuarios' => $usuario,
+            'perfis' => $perfis
+        ]);
+
 
         if ($method === "GET" && $id) {
             $usuario = $this->usuarioDao->obterPorId($id);
@@ -54,9 +64,8 @@ class UsuarioController extends BaseController
                 $this->inserir($_POST, $_FILES);
             }
         }
+        // Carrega todos os usuários para listar
 
-        $usuarios = $this->usuarioDao->ListarTodos();
-        $this->render("usuario/index", ["perfis" => $perfis]);
     }
 
     // Função responsável por inserir um usuário
@@ -69,7 +78,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->adicionarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuarios");
+        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuario");
     }
 
     // Função responsável por alterar os dados de um usuário
@@ -82,7 +91,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->alterarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success(" alterado com sucesso!", "/listar-usuarios");
+        echo $this->Success(" alterado com sucesso!", "/listar-usuario");
     }
 
     // Confirmação de exclusão de usuário
@@ -95,26 +104,21 @@ class UsuarioController extends BaseController
     }
 
     // Função responsável por excluir um usuário
+
     public function excluir($id)
     {
-
         if ($id) {
             $this->usuarioDao->excluir($id);
-            echo $this->Success("Usuario excluido com sucesso!", "/listar-usuario");
+            echo $this->Success("Deseja realmente excluir esta usuario", "/listar-usuario");
         }
-
         require_once "../src/Views/shared/header.php";
     }
     public function alterarStatus($id, $status)
     {
-        if ($id && in_array($status, ['0', '1'])) {
-            $usuario = new Usuario($id, "", "", "", "", "", "", $status);
+        if ($id):
+            $usuario = new Usuario($id, "", "", "", "", "", $ativo);
             $this->usuarioDao->alterar($usuario);
-            echo json_encode(['success' => true]);
-        } else {
-            http_response_code(400);
-            echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
-       // }
+        endif;
     }
 
     public function logout()
