@@ -22,7 +22,7 @@ Router::add("GET", "/listar-usuarios", UsuarioController::class, "listar");
 Router::add("GET", "/editar-usuario/{id}", UsuarioController::class, "index");
 Router::add("GET", "/deletar-usuario/{id}", UsuarioController::class, "deleteConfirm");
 Router::add("GET", "/excluir-usuario/{id}", UsuarioController::class, "excluir");
-Router::add("GET", "/alterar-status-usuario/{id}/{status}", UsuarioController::class, "alterarStatus");
+Router::add("GET", "/alterar-status/{id}/{status}", UsuarioController::class, "alterarStatus");
 Router::add("GET", "/logout", UsuarioController::class, "logout");
 // ROTAS DE PRODUTOS
 Router::add("GET", "/cadastrar-produto", ProdutoController::class, "index");

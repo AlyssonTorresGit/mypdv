@@ -104,12 +104,11 @@ class UsuarioController extends BaseController
     }
 
     // Função responsável por excluir um usuário
-
     public function excluir($id)
     {
         if ($id) {
             $this->usuarioDao->excluir($id);
-            echo $this->Success("Deseja realmente excluir esta usuario", "/listar-usuario");
+            echo $this->Success("Deseja realmente excluir esta usuario", "/listar-usuarios");
         }
         require_once "../src/Views/shared/header.php";
     }

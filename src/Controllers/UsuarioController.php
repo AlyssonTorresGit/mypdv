@@ -97,10 +97,9 @@ class UsuarioController extends BaseController
     // Função responsável por excluir um usuário
     public function excluir($id)
     {
-
         if ($id) {
             $this->usuarioDao->excluir($id);
-            echo $this->Success("Usuario excluido com sucesso!", "/listar-usuario");
+            echo $this->Success("Usuario excluido com sucesso!", "/listar-usuarios");
         }
 
         require_once "../src/Views/shared/header.php";
@@ -108,7 +107,7 @@ class UsuarioController extends BaseController
     public function alterarStatus($id, $status)
     {
         if ($id && in_array($status, ['0', '1'])) {
-            $usuario = new Usuario($id, "", "", "", "", "", "", $status);
+            $usuario = new Usuario($id, "", "", "", "", "", $status);
             $this->usuarioDao->alterar($usuario);
             echo json_encode(['success' => true]);
         } else {

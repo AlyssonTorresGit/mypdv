@@ -1,4 +1,5 @@
 <?php require_once "../src/Views/shared/header.php";
+$naologado = 'usuario não logado';
 ?>
 <div class="body">
     <aside id="sidebar">
@@ -9,14 +10,14 @@
 
         <nav class="">
             <div class="box-12">
-                <h3 class="fonte12 espaco-letra fnc-laranja mg-b-3">Ola, <?= $_SESSION['nome'] ?>. Seja bem vindo! </h3>
+                <h3 class="fonte12 espaco-letra fnc-laranja mg-b-3">Ola, <?= $_SESSION['nome'] ?? $naologado ?>. Seja bem vindo! </h3>
             </div>
 
             <a href="/painel-controle">
                 <i class="fas fa-home fonte14"></i>
                 <span>Início</span>
             </a>
-            <a href="#">
+            <a href="/gerar-venda">
                 <i class="fas fa-receipt fonte14"></i>
                 <span>Vendas</span>
             </a>
@@ -29,7 +30,7 @@
                 <span>Clientes</span>
             </a>
 
-            <a href="/listar-usuario">
+            <a href="/listar-usuarios">
                 <i class="fas fa-user fonte14"></i>
                 <span>Usuarios</span>
             </a>
