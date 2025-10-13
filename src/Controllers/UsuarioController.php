@@ -69,7 +69,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->adicionarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuarios");
+        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuario");
     }
 
     // Função responsável por alterar os dados de um usuário
@@ -82,7 +82,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->alterarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success(" alterado com sucesso!", "/listar-usuarios");
+        echo $this->Success(" alterado com sucesso!", "/listar-usuario");
     }
 
     // Confirmação de exclusão de usuário
@@ -114,7 +114,7 @@ class UsuarioController extends BaseController
         } else {
             http_response_code(400);
             echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
-       // }
+        }
     }
 
     public function logout()
