@@ -1,7 +1,7 @@
 // Este bloco aguarda qualquer tecla ser pressionada
 document.addEventListener('keydown', function (e) {
     // Previne o comportamento padrão da tecla (importante para F1 e F2 que abrem ajuda do navegador)
-    if (e.key === 'F1' || e.key === 'F2' || e.key === 'F3' || e.key === 'F4' || e.key === 'F9') {
+    if (e.key === 'F1' || e.key === 'F2' || e.key === 'F3' || e.key === 'ENTER' || e.key === 'F4' || e.key === 'F9') {
         e.preventDefault();
     }
 
@@ -37,7 +37,7 @@ document.addEventListener('keydown', function (e) {
     }
 
     // Se pressionar ENTER, executa a finalização da venda
-    if (e.key === 'F9') {
+    if (e.key === 'Enter') {
         // Aqui você pode, por exemplo, fazer uma requisição AJAX para gravar a venda ou redirecionar formFinalizarVenda
         document.getElementById('formFinalizarVenda').submit();
 
@@ -76,7 +76,7 @@ document.addEventListener('keydown', function (e) {
     }
 
     // Enter = Finaliza venda
-    if (e.key === 'F9') {
+    if (e.key === 'ENTER') {
         alert("Venda finalizada com sucesso!");
     }
 

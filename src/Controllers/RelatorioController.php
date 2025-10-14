@@ -52,7 +52,7 @@ class RelatorioController extends BaseController
       endif;
 
       if ($export === 'excel'):
-         RelatorioService::exportarExcel( $cabecalho, $dados, "Relatotio_{$tipo}.xlsx");
+         RelatorioService::exportarExcel($cabecalho, $dados, "Relatotio_{$tipo}.xlsx");
          return;
       endif;
 

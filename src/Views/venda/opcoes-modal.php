@@ -34,14 +34,14 @@
                 endif;
                 ?>
 
-            </select> 
-             
-            <div id="valor-recebido-box" style="display: none";> 
+            </select>
+            <!-- troco  -->
+            <div id="valor-recebido-box" style="display: none" ;>
                 <label for="valorRecebido"></label>
                 <input type="number" step="0.01" min="0" name="valorRecebido" placeholder="Ex:100.00">
             </div>
-            
-            <button type="submit" class="btn bg-primario fnc-terciario sem-borda">Finalizar venda 
+
+            <button type="submit" class="btn bg-primario fnc-terciario sem-borda">Finalizar venda
                 <span class="fnc-laranja-claro fw-500 mg-l-1 fonte12">(ENTER)</span>
             </button>
 
