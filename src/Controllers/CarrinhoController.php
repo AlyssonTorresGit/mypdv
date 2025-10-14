@@ -117,10 +117,10 @@ class CarrinhoController extends BaseController
             header("location: /");
             exit;
         endif;
-       
-        if(empty($_SESSION['carrinho'])):
-             header("location: /gerar-venda");
-             exit;
+
+        if (empty($_SESSION['carrinho'])):
+            header("location: /gerar-venda");
+            exit;
         endif;
 
         $usuario = $_SESSION['idusuario'] ?? null;
@@ -129,41 +129,41 @@ class CarrinhoController extends BaseController
         // echo " $usuario <br>";
         // echo " $clienteId <br>";
         // echo " $formaPagamento <br>";
-         if (!$usuario || !$clienteId || !$formaPagamento) {
-             $this->loginError("Dados obrigatórios não informados.");
-             return;
-         }
+        if (!$usuario || !$clienteId || !$formaPagamento) {
+            $this->loginError("Dados obrigatórios não informados.");
+            return;
+        }
 
-         $itensVenda = [];
-         $total = 0.0;
+        $itensVenda = [];
+        $total = 0.0;
 
-         foreach ($_SESSION['carrinho'] as $item) {
-             $preco = (float)$item['preco'];
-             $qtde = (int)$item['qtde'];
-             $desconto = round(($preco * $item['desc']) / 100, 2);
-             $subTotal = round(($preco * $qtde) - $desconto, 2);
-             $total += $subTotal;
+        foreach ($_SESSION['carrinho'] as $item) {
+            $preco = (float)$item['preco'];
+            $qtde = (int)$item['qtde'];
+            $desconto = round(($preco * $item['desc']) / 100, 2);
+            $subTotal = round(($preco * $qtde) - $desconto, 2);
+            $total += $subTotal;
 
-             $itensVenda[] = [
-                 'produto' => $item['id'],
-                 'quantidade' => $qtde,
-                 'valorunitario' => $preco
-             ];
-         }
+            $itensVenda[] = [
+                'produto' => $item['id'],
+                'quantidade' => $qtde,
+                'valorunitario' => $preco
+            ];
+        }
 
-         $dadosVenda = [
-             'valor' => round($total, 2),        
-             'status' => 'APROVADO',
-             'formaPagamento' => $formaPagamento,
-             'cliente' => $clienteId,
-             'usuario' => $usuario,
-             'itensvenda' => $itensVenda
-         ];
+        $dadosVenda = [
+            'valor' => round($total, 2),
+            'status' => 'APROVADO',
+            'formaPagamento' => $formaPagamento,
+            'cliente' => $clienteId,
+            'usuario' => $usuario,
+            'itensvenda' => $itensVenda
+        ];
 
         $valorRecebido = isset($_POST['valorRecebido']) ? (float) $_POST['valorRecebido'] : 0.0;
         $idPagamentoDinheiro = 1; // ajuste conforme o ID real no banco        
         $troco = 0.0;
-        
+
         if ((int) $formaPagamento === $idPagamentoDinheiro):
             if ($valorRecebido <= 0) :
                 $this->loginError("Informe o valor recebido em dinheiro.");
@@ -179,22 +179,18 @@ class CarrinhoController extends BaseController
         endif;
 
 
-         try {
-             $vendaService = new VendaService();
-             $vendaService->inserirVenda($dadosVenda);
-             unset($_SESSION['carrinho']);
+        try {
+            $vendaService = new VendaService();
+            $vendaService->inserirVenda($dadosVenda);
+            unset($_SESSION['carrinho']);
 
             echo $this->defaultMessage(
                 "Venda finalizada com sucesso! ",
-                    ($troco > 0 ? "Troco: R$ " . number_format($troco, 2, ',', '.') : ""),
+                ($troco > 0 ? "Troco: R$ " . number_format($troco, 2, ',', '.') : ""),
                 "/gerar-venda"
             );
-             
-         } catch (Exception $e) {
-             $this->loginError("Erro ao finalizar a venda: " . $e->getMessage());
-         }
-
-
-
+        } catch (Exception $e) {
+            $this->loginError("Erro ao finalizar a venda: " . $e->getMessage());
+        }
     }
 }// classe

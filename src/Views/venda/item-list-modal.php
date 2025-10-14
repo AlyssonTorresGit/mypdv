@@ -32,7 +32,7 @@
                         $subtotal = $preco * $qtde; // Subtotal antes do desconto
                         $descontoValor = round(($subtotal * $desconto) / 100, 2); // Calcula o desconto e arredonda para 2 casas decimais
                         $subtotalFinal = round($subtotal - $descontoValor, 2); // Subtrai o desconto e arredonda
-                        
+
 
                 ?>
 
@@ -41,8 +41,9 @@
                             <td class="txt-e"><?= $item['qtde']; ?></td>
                             <td class="txt-e"><?= $item['desc']; ?></td>
                             <td class="txt-e">R$ <?= number_format($preco, 2, ',', '.'); ?></td>
-                            <td class="txt-e">R$ <?= number_format($subtotal- $descontoValor, 2, ',', '.'); ?></td>
-                            <td><a href="/excluir-item-carrinho/<?= $key; ?>"> <i class="fa-solid fa-trash-can fnc-error"></i> </a> </tr>
+                            <td class="txt-e">R$ <?= number_format($subtotal - $descontoValor, 2, ',', '.'); ?></td>
+                            <td><a href="/excluir-item-carrinho/<?= $key; ?>"> <i class="fa-solid fa-trash-can fnc-error"></i> </a>
+                        </tr>
                         </tr>
 
                 <?php endforeach;

@@ -24,6 +24,7 @@ body {
     background-color: #f5f5f5;
     -webkit-overflow-scrolling: touch;
 }
+
 :root{
     --cor-primaria:rgb(73, 75, 245);
     --cor-secundario:rgb(125, 151, 246);

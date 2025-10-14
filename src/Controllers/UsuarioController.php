@@ -82,14 +82,16 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->alterarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success(" alterado com sucesso!", "/listar-usuario");
+        echo $this->Success(" alterado com sucesso!", "/listar-usuarios");
     }
+
+
 
     // Confirmação de exclusão de usuário
     public function deleteConfirm($id)
     {
         if ($id) {
-            echo $this->Confirm("Deseja realmente excluir este usuario?", "/excluir-usuario/{$id}", "/listar-usuario");
+            echo $this->Confirm("Deseja realmente excluir este usuario?", "/excluir-usuario/{$id}", "/listar-usuarios");
         }
         require_once "../src/Views/shared/header.php";
     }

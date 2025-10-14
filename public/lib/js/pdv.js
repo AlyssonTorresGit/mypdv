@@ -1,7 +1,7 @@
 // Este bloco aguarda qualquer tecla ser pressionada
 document.addEventListener('keydown', function (e) {
     // Previne o comportamento padrão da tecla (importante para F1 e F2 que abrem ajuda do navegador)
-    if (e.key === 'F1' || e.key === 'F2' || e.key === 'F3' || e.key === 'F4' || e.key === 'F5') {
+    if (e.key === 'F1' || e.key === 'F2' || e.key === 'F3' || e.key === 'F4' || e.key === 'F9') {
         e.preventDefault();
     }
 
@@ -28,22 +28,23 @@ document.addEventListener('keydown', function (e) {
         }
     }
 
-    if (e.key === 'F4') {
+    if (e.key === 'F11') {
         window.location.href = '/consultar-carrinho';
     }   
 
-        if (e.key === 'F5') {
+        if (e.key === 'F9') {
         window.location.href = '/opcoes-venda';
     }
 
     // Se pressionar ENTER, executa a finalização da venda
-    if (e.key === 'Enter') {
+    if (e.key === 'F9') {
         // Aqui você pode, por exemplo, fazer uma requisição AJAX para gravar a venda ou redirecionar formFinalizarVenda
         document.getElementById('formFinalizarVenda').submit();
 
     }
 
 });
+document.getElementById('inputProduto').focus(); //o curso volta paa o digite o código do produto
 
 //   SCRIPT MODAL
 // Mostra a modal com o título desejado
@@ -67,12 +68,15 @@ document.addEventListener('keydown', function (e) {
         abrirModal('Consulta de Clientes');
     }
     // F2 = Consultar Cliente
-    if (e.key === 'F5') {
+    if (e.key === 'F11') {
         abrirModal('Excluir item carrinho');
+    }
+    if (e.key === 'F4') {
+        abrirModal('Desconto');
     }
 
     // Enter = Finaliza venda
-    if (e.key === 'Enter') {
+    if (e.key === 'F9') {
         alert("Venda finalizada com sucesso!");
     }
 

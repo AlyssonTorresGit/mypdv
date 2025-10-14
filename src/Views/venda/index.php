@@ -18,6 +18,7 @@
             <div class="item-list bg-branco shadow-down">
 
                 <div class="itens">
+                    <span class="fw-bold fonte12">Codigo</span>
                     <span class="fw-bold fonte12">Produto</span>
                     <span class="fw-bold fonte12">Quantidade</span>
                     <span class="fw-bold fonte12">Desconto</span>
@@ -48,6 +49,7 @@
                             //     echo "Sessão Carrinho não existe";
                             // endif;
                             ?>
+                            <span class="fonte10 fw-400 txt-e"><?= $item['codigo'] ?></span>
                             <span class="fonte10 fw-400 txt-e"><?= $item['nome'] ?></span>
                             <span class="fonte10 fw-400 txt-e"><?= $item['qtde'] ?></span>
                             <span class="fonte10 fw-400 txt-e"><?= $item['desc'] ?></span>
@@ -71,12 +73,13 @@
                 <div class="atalhos flex justify-center mg-b-4">
                     <button class="pd-10 mg-r-1 fw-600"> Consultar Produto<span class=" fnc-amarelo poppins-black"><br>(F1)</span></button>
                     <button class="pd-10 mg-l-1 fw-600">Consultar Cliente <span class=" fnc-amarelo poppins-black"><br>(F2)</span></button>
+                    <button class="pd-10 mg-r-1 fw-600">Desconto<span class=" fnc-amarelo poppins-black"><br>(F4)</span></button>
                 </div>
                 <h3 class="fonte16 fnc-branco txt-c">Ações</h3>
                 <div class="acoes flex justify-center">
                     <button class="pd-10 mg-r-1 fw-600">Cancelar Venda <span class=" fnc-vermelho poppins-black"><br>(F3)</span></button>
-                    <button class="pd-10 mg-r-1 mg-l-1 fw-600">Remover Item <span class=" fnc-laranja poppins-black"><br>(F4)</span></button>
-                    <button class="pd-10 mg-l-1 fw-600">Finalizar venda <span class=" fnc-verde-escuro poppins-black"><br>(F5)</span></button>
+                    <button class="pd-10 mg-r-1 mg-l-1 fw-600">Remover Item <span class=" fnc-laranja poppins-black"><br>(F11)</span></button>
+                    <button class="pd-10 mg-l-1 fw-600">Finalizar venda <span class=" fnc-verde-escuro poppins-black"><br>(F9)</span></button>
 
                 </div>
             </div>
@@ -84,4 +87,8 @@
 
     </div>
 </section>
-<script type="text/javascript" src="/lib/js/pdv.js"></script>
+<script type="text/javascript" src="/lib/js/pdv.js">
+    window.onload = function() {
+        document.getElementById('inputProduto').focus();
+    };
+</script>

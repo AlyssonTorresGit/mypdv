@@ -21,7 +21,7 @@ class BaseController extends Notifications
 
             if (!empty($dadosUsuario) && password_verify($senha, $dadosUsuario[0]->SENHA)):
                 $this->gerraSessao($dadosUsuario);
-                header("Location:/gerar-venda");
+                header("Location:/painel-controle");
                 exit;
             else :
                 echo $this->loginError('Usuario ou senha incorreto!');
