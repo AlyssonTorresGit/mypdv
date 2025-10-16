@@ -1310,7 +1310,7 @@ a{
     flex-direction: column;
     justify-content: center;
     background-color: rgba(0,0,0,0.09);
-    z-index: 999;
+    z-index: 9999;
 }
 .aviso .msg{
     width: 350px;

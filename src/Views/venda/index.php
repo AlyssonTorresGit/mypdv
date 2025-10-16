@@ -80,9 +80,19 @@
                     <button class="pd-10 mg-r-1 fw-600">Cancelar Venda <span class=" fnc-vermelho poppins-black"><br>(F3)</span></button>
                     <button class="pd-10 mg-r-1 mg-l-1 fw-600">Remover Item <span class=" fnc-laranja poppins-black"><br>(F11)</span></button>
                     <button class="pd-10 mg-l-1 fw-600">Finalizar venda <span class=" fnc-verde-escuro poppins-black"><br>(F9)</span></button>
-
                 </div>
             </div>
+            <div class="box-12 flex justify-between item-centro">
+                <a href="/logout" class="fnc-secundario">
+                    <i class="fa-solid fa-rigth-from-bracket fonte14 fnc-secundario fnc-branco-hover"></i>
+                    <span>Logout</span>
+                </a>
+
+                <a href="/painel-controle" class="block fnc-secundario txt-d fnc-branco-hover">
+                    Painel de controle
+                </a>
+            </div>
+
         </div>
 
     </div>

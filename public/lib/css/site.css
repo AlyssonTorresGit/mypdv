@@ -84,3 +84,6 @@ border-radius: 10px;
 input[type="file"]{
     display:none;
 }
+.fnc-branco-hover:hover{
+  color: #f8f8f8;
+}

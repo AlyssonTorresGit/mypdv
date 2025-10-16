@@ -7,6 +7,7 @@ use App\Models\Dao\ProdutoDao;
 use App\Models\Produto;
 use App\Models\Dao\ClienteDao;
 use App\Services\VendaService;
+use App\Models\Dao\CaixaDao;
 use Exception;
 
 class CarrinhoController extends BaseController
@@ -17,45 +18,55 @@ class CarrinhoController extends BaseController
             session_start();
         endif;
 
-        if ($_SERVER["REQUEST_METHOD"] === "POST"):
+        $caixa = (new CaixaDao())->validarCaixa($_SESSION['idusuario']);
 
-            $codigo = str_pad($_POST['codigo'], '6', '0', STR_PAD_LEFT) ?? '';
-            $qtde = max(1, (int) ($_POST['qtde'] ?? 1));
+        //verfica se o caixa esta aberto
+        if ($caixa[0]['EXISTE'] >= 1):
+            //se for requisição POST, adiciona o produto no carrinho
+            if ($_SERVER["REQUEST_METHOD"] === "POST"):
 
-            $produto = (new ProdutoDao())->obterPorCodigo($codigo);
+                $codigo = str_pad($_POST['codigo'], '6', '0', STR_PAD_LEFT) ?? '';
+                $qtde = max(1, (int) ($_POST['qtde'] ?? 1));
 
-            if (!$produto):
-                http_response_code(404);
-                echo "Produto não encontrado";
+                $produto = (new ProdutoDao())->obterPorCodigo($codigo);
+
+                if (!$produto):
+                    http_response_code(404);
+                    echo "Produto não encontrado";
+                    exit;
+
+                endif;
+
+                if (!isset($_SESSION['carrinho'])):
+                    $_SESSION['carrinho'] = [];
+                endif;
+
+                $indiceCarrinho = array_search($codigo, array_column($_SESSION['carrinho'], 'codigo'));
+
+                if ($indiceCarrinho === false):
+                    $_SESSION['carrinho'][] = [
+                        "id" =>  $produto[0]->ID,
+                        "codigo" => $produto[0]->CODIGO,
+                        "nome"  => $produto[0]->NOME,
+                        "preco"  => $produto[0]->PRECO,
+                        "desc"  => $produto[0]->DESCONTO,
+                        "imagem"  => $produto[0]->IMAGEM,
+                        "qtde"  => $qtde,
+                    ];
+                else:
+                    $_SESSION['carrinho'][$indiceCarrinho]['qtde'] += $qtde;
+                endif;
+
+                echo json_encode(["status" => "ok"]);
                 exit;
-
             endif;
-
-            if (!isset($_SESSION['carrinho'])):
-                $_SESSION['carrinho'] = [];
-            endif;
-
-            $indiceCarrinho = array_search($codigo, array_column($_SESSION['carrinho'], 'codigo'));
-
-            if ($indiceCarrinho === false):
-                $_SESSION['carrinho'][] = [
-                    "id" =>  $produto[0]->ID,
-                    "codigo" => $produto[0]->CODIGO,
-                    "nome"  => $produto[0]->NOME,
-                    "preco"  => $produto[0]->PRECO,
-                    "desc"  => $produto[0]->DESCONTO,
-                    "imagem"  => $produto[0]->IMAGEM,
-                    "qtde"  => $qtde,
-                ];
-            else:
-                $_SESSION['carrinho'][$indiceCarrinho]['qtde'] += $qtde;
-            endif;
-
-            echo json_encode(["status" => "ok"]);
-            exit;
+            // se não for POST, carrega a tela de vendas
+            require_once "../src/Views/venda/index.php";
+        else:
+            //Se não hober caixa aberto, redicioona para o abrir caixa
+            require_once "../src/Views/venda/caixa/abrir-caixa.php";
         endif;
 
-        require_once "../src/Views/venda/index.php";
         exit;
     } // inserir produto
     public function atualizarCarrinho($lin)

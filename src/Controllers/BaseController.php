@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Dao\CaixaDao;
 use App\Models\Dao\UsuarioDao;
 use App\Models\Notifications;
 
@@ -21,7 +22,15 @@ class BaseController extends Notifications
 
             if (!empty($dadosUsuario) && password_verify($senha, $dadosUsuario[0]->SENHA)):
                 $this->gerraSessao($dadosUsuario);
-                header("Location:/painel-controle");
+
+                $caixa = (new CaixaDao())->validarCaixa($_SESSION['idusuario']);
+
+                if ($caixa[0]['EXISTE'] >= '1'):
+                    header("Location:/gerar-venda");
+                else:
+                    header("Location:/abrir-caixa");
+                endif;
+
                 exit;
             else :
                 echo $this->loginError('Usuario ou senha incorreto!');

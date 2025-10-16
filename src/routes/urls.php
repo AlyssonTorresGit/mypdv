@@ -72,4 +72,4 @@ Router::add("GET", "/relatorios", RelatorioController::class, "relatorio");
 Router::add("GET", "/relatorios/gerar", RelatorioController::class, "gerarRelatorio");
 // ROTAS PARA MANIPULAR OS CAIXAS
 Router::add("GET", "/abrir-caixa", CaixaController::class, "abrirCaixa");
-Router::add("GET", "/abrir-caixa", CaixaController::class, "abrirCaixa");
+Router::add("POST", "/abrir-caixa", CaixaController::class, "abrirCaixa");

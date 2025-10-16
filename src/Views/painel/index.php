@@ -1,5 +1,7 @@
 <?php require_once "../src/Views/shared/header.php";
-$naologado = 'usuario não logado';
+if($_SESSION['Idusuario']<>1):
+    header("location: /gerar-venda");
+
 ?>
 <div class="body">
     <aside id="sidebar">
