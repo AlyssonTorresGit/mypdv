@@ -80,3 +80,11 @@ Deploy (breve).
 Contribuição / PRs.
 
 Licença e contato.
+
+
+bibliotecas utilizadas do composer na packagist
+
+composer require dompdf/dompdf 
+e
+composer require phpoffice/phpspreadsheet mo pho 8.1  ou superior
+composer require phpoffice/phpspreadsheet:"^1.29" para o php 8.0 

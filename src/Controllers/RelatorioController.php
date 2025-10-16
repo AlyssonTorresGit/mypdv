@@ -37,12 +37,33 @@ class RelatorioController extends BaseController
             $dados = $this->relatorioDao->vendasPorPeriodo($inicio, $fim);
             $titulo = 'Vendas Por Período';
             $cabecalho = ['Data da Venda', 'Total de Vendas', 'Faturamento', 'Ticket Médio'];
-            //var_dump($dados);
-
             break;
 
-         case 'vandas-produtos':
-            echo "Vendas por produtos";
+         case 'vendas-produtos':
+            $inicio = $_GET['inicio'] ?? date('Y-m-d', strtotime('-7 days'));
+            $fim = $_GET['fim'] ?? date('Y-m-d');
+            $icon = 'fa-solid fa-box-open';
+            $dados = $this->relatorioDao->vendasProdutos($inicio, $fim);
+            $titulo = 'Vendas por produto';
+            $cabecalho = ['Data da Venda', 'Codígo', 'Produto', 'Qtd Vendida', 'Faturamento'];
+            break;
+
+         case 'vendas-cliente':
+            $inicio = $_GET['inicio'] ?? date('Y-m-d', strtotime('-7 days'));
+            $fim = $_GET['fim'] ?? date('Y-m-d');
+            $icon = 'fa-solid fa-user';
+            $dados = $this->relatorioDao->vendasCliente($inicio, $fim);
+            $titulo = 'Vendas por produto';
+            $cabecalho = ['Data da Venda', 'Produto', 'Qtdi Vendida', 'Faturamento'];
+            break;
+
+         case 'vendas-forma-pagamento':
+            $inicio = $_GET['inicio'] ?? date('Y-m-d', strtotime('-7 days'));
+            $fim = $_GET['fim'] ?? date('Y-m-d');
+            $icon = 'fa-solid fa-money-bill-trend-up';
+            $dados = $this->relatorioDao->vendasFormaPagamento($inicio, $fim);
+            $titulo = 'Vendas por produto';
+            $cabecalho = ['Data da Venda', 'Produto', 'Qtdi Vendida', 'Faturamento'];
             break;
       }
 
@@ -55,7 +76,6 @@ class RelatorioController extends BaseController
          RelatorioService::exportarExcel($cabecalho, $dados, "Relatotio_{$tipo}.xlsx");
          return;
       endif;
-
       require_once '../src/Views/relatorio/base-relatorio.php';
    }
 }

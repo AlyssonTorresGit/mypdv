@@ -12,6 +12,7 @@ use App\Controllers\CategoriaController;
 use App\Controllers\ConfiguracaoController;
 use App\Controllers\CarrinhoController;
 use App\Controllers\RelatorioController;
+use App\Controllers\CaixaController;
 
 Router::add("GET", "/", BaseController::class, "home");
 Router::add("POST", "/", BaseController::class, "home");
@@ -69,3 +70,6 @@ Router::add("POST", "/finalizar-venda", CarrinhoController::class, "finalizarVen
 // ROTAS PARA PAGINA DE RELATÓRIOS
 Router::add("GET", "/relatorios", RelatorioController::class, "relatorio");
 Router::add("GET", "/relatorios/gerar", RelatorioController::class, "gerarRelatorio");
+// ROTAS PARA MANIPULAR OS CAIXAS
+Router::add("GET", "/abrir-caixa", CaixaController::class, "abrirCaixa");
+Router::add("GET", "/abrir-caixa", CaixaController::class, "abrirCaixa");

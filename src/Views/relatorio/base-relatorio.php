@@ -1,4 +1,7 @@
-<?php require_once "../src/Views/shared/header.php"; ?>
+<?php require_once "../src/Views/shared/header.php";
+// echo 'teste relaotio';
+
+?>
 
 <div class="container pd-20">
 
@@ -10,10 +13,10 @@
         </h1>
 
         <div class="box-6 flex justify-end">
-            <a href="?tipo=<?= htmlspecialchars($tipo) ?>&inicio=<?= urlencode($inicio)?>&fim=<?= urlencode($fim)?>&export=pdf" class="mg-r-2">
+            <a href="?tipo=<?= htmlspecialchars($tipo) ?>&inicio=<?= urlencode($inicio) ?>&fim=<?= urlencode($fim) ?>&export=pdf" class="mg-r-2">
                 <button class="sem-borda pd-5 bg-error fnc-branco">📄 Exportar PDF</button>
             </a>
-            <a href="?tipo=<?= htmlspecialchars($tipo) ?>&inicio=<?= urlencode($inicio)?>&fim=<?= urlencode($fim)?>&export=excel">
+            <a href="?tipo=<?= htmlspecialchars($tipo) ?>&inicio=<?= urlencode($inicio) ?>&fim=<?= urlencode($fim) ?>&export=excel">
                 <button class="sem-borda pd-5 bg-sucesso fnc-branco">📊 Exportar Excel</button>
             </a>
         </div>
