@@ -1,6 +1,7 @@
 <?php require_once "../src/Views/shared/header.php";
-if($_SESSION['Idusuario']<>1):
-    header("location: /gerar-venda");
+// if ($_SESSION['idusuario'] != 0):
+//     header("location: /gerar-venda");
+// endif;
 
 ?>
 <div class="body">
@@ -12,7 +13,7 @@ if($_SESSION['Idusuario']<>1):
 
         <nav class="">
             <div class="box-12">
-                <h3 class="fonte12 espaco-letra fnc-laranja mg-b-3">Ola, <?= $_SESSION['nome'] ?? $naologado ?>. Seja bem vindo! </h3>
+                <h3 class="fonte12 espaco-letra fnc-laranja mg-b-3 txt-c">Ola, <?= ucfirst($_SESSION['nome']) ?? $naologado ?>.<br> Seja Bem Vindo! </h3>
             </div>
 
             <a href="/painel-controle">
@@ -21,7 +22,11 @@ if($_SESSION['Idusuario']<>1):
             </a>
             <a href="/gerar-venda">
                 <i class="fas fa-receipt fonte14"></i>
-                <span>Vendas</span>
+                <span> PDV</span>
+            </a>
+            <a href="/listar-caixas">
+                <i class="fa-solid fa-cash-register fonte14"></i>
+                <span>Caixas</span>
             </a>
             <a href="/listar-produtos">
                 <i class="fas fa-box fonte14"></i>

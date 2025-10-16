@@ -7,6 +7,29 @@ use App\Models\Dao\CaixaDao;
 
 class CaixaController extends BaseController
 {
+    private CaixaDao $caixaDao;
+    public function __construct(CaixaDao $caixaDao)
+    {
+        $this->caixaDao = $caixaDao ?? new CaixaDao;
+    }
+    public function listarCaixa()
+    {
+        $caixas = $this->caixaDao->listarCaixas();
+        $this->render("venda/caixa/listar", ["caixas" => $caixas]);
+    }
+
+    public function historicoCaixa()
+    {
+        $caixas = $this->caixaDao->listarCaixas();
+        $this->render("venda/caixa/historico", ["caixas" => $caixas]);
+    }
+    public function fecharCaixa($id = null)
+    {
+        $this->render("venda/caixa/fechar-caixa.php", ["id" => $id]);
+    }
+
+
+
     public function abrirCaixa()
     {
         if (!isset($_SESSION)):
@@ -17,7 +40,7 @@ class CaixaController extends BaseController
             $valorinicial = htmlspecialchars($_POST['saldoincial']);
             $usuario = $_SESSION['idusuario'];
             $caixa = new Caixa(null, $usuario, '', $valorinicial, '', 'ABERTO');
-            $caixaDao = (new CaixaDao())->adicionar($caixa);
+            $this->caixaDao->adicionar($caixa);
 
             echo $this->success('Caixa aberto', '/gerar-venda');
         endif;

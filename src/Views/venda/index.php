@@ -83,8 +83,8 @@
                 </div>
             </div>
             <div class="box-12 flex justify-between item-centro">
-                <a href="/logout" class="fnc-secundario">
-                    <i class="fa-solid fa-rigth-from-bracket fonte14 fnc-secundario fnc-branco-hover"></i>
+                <a href="/logout" class="fnc-secundario fnc-branco-hover">
+                    <i class="fa-solid fa-right-from-bracket fonte14 fnc-secundario fnc-branco-hover"></i>
                     <span>Logout</span>
                 </a>
 
