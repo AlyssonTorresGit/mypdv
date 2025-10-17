@@ -19,6 +19,55 @@
   display: flex;
   flex-direction: column;
 }
+.medium-inputs{
+gap: 15px;
+  display: flex;
+   align-items: center;
+}
+.medium-inputs input {
+    flex: 1; /* Faz cada input ocupar o mesmo espaço */
+    padding: 8px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+.medium-inputs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.lbl-compacto {
+    font-size: 11px;
+    color: #ccc;
+    font-weight: 500;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-pdv {
+    height: 32px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #1b1f2f;
+    color: #fff;
+    padding: 0 6px;
+    text-align: center;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-pdv:focus {
+    border-color: #2e6fff;
+    box-shadow: 0 0 5px #2e6fff70;
+}
+
 .item-list{
   flex: 1;
   padding: 10px;

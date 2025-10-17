@@ -7,7 +7,17 @@
 
             <div class="top-inputs">
                 <input id="inputProduto" class="bg-branco sem-borda shadow-down" type="text" name="codigo" placeholder="digite o código do produto">
-                <input id="inputQtde" class="bg-branco sem-borda shadow-down" type="number" name="qtde" min="1" value="1" placeholder="quantidade desejada...">
+
+                <div class="medium-inputs">
+                    <label for="inputQtde" class="lbl-compacto">Qtd.</label>
+                    <input id="inputQtde" class="bg-branco sem-borda shadow-down" type="number" name="qtde" min="1" value="1" placeholder="quantidade desejada...">
+
+                    <label for="inputporcento" class="lbl-compacto">Desconto.</label>
+                    <div id="inputdesconto">
+                        <input id="inputR$" class="bg-branco sem-borda shadow-down" type="number" name="porcentagem" min="0" value="0" placeholder="quantidade desejada...">
+                        <input id="input%" class="bg-branco sem-borda shadow-down" type="number" name="inteiro" min="0" value="0" placeholder="quantidade desejada...">
+                    </div>
+                </div>
             </div>
             <?php
             if (!isset($_SESSION)):
@@ -66,7 +76,7 @@
 
         </div>
 
-        <div class="right-painel bg-primario">
+        <div class="right-painel bg-primario ">
             <div class="box-12 flex justify-between item-centro bg-branco pd-5  ">
                 <a href="" class="fnc-secundario fnc-branco-hover">
                     <i class="fa-solid fa-cash-register fonte14 fnc-secundario fnc-branco-hover"></i>

@@ -561,6 +561,9 @@ img {
 .pd-r-10 {
     padding-right: 10rem;
 }
+gap-10{
+    gap: 10px;
+}
 
 .fonte0 {
     font-size: 0rem;
