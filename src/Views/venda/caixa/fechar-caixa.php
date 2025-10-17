@@ -12,6 +12,6 @@
             <input type="text" name="totalfechamento" class="mg-b-2" placeholder="Insira o valor inicial deste caixa EX: 100.95" class="mg-b-2">
             <input type="submit" name="Abri Caixa" value="Abrir Caixa" class="btn-100 bg-primario fnc-branco">
         </form>
-
+        <?= $id ?>
     </div>
 </div>

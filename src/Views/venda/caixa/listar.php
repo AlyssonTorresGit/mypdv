@@ -24,31 +24,32 @@
             </tr>
         </thead>
         <tbody>
-        <?php 
-        if(isset($caixas) && count($caixas)):
-            foreach ($caixas as $caixa):
-                if($caixa->STATUS == 'ABERTO'):
-                    if(is_null($caixa->CODIGO)): $caixa->CODIGO = 0;
-                endif; ?>
-                <tr>
-                    <td class="fonte12 pd-10 txt-c"><?= ucfirst(strtolower($caixa->ABERTOPOR)); ?></td>
-                    <td class="fonte12 pd-10 txt-c"><?= $caixa->DATAABERTURA;?></td>
-                    <td class="fonte12 pd-10 txt-c"><?= $caixa->DATAFECHAMENTO; ?></td>
-                    <td class="fonte12 pd-10 txt-c"><?= $caixa->SALDOINICIAL; ?></td>
-                    <td class="fonte12 pd-10 txt-c"><?= $caixa->STATUS; ?></td>
-                </tr>
-                <td class="txt-c">
-                    <a href="/fechar-caixa<?=$caixa->CODIGO;?>">
-                        <i class="fa-solid fa-money-check-dollar fonte16 mg-r-2 fnc-primario" ></i>
-                    </a>
-                    <a href="/historico-caixas">
-                        <i class="fa-solid fa-circle-info fonte16 mg-r-2 fnc-error"></i>
-                    </a>
-                </td>
-                
+            <?php
+            if (isset($caixas) && count($caixas)):
+                foreach ($caixas as $caixa):
+                    if ($caixa->STATUS == 'ABERTO'):
+                        if (is_null($caixa->CODIGO)): $caixa->CODIGO = 0;
+                        endif; ?>
+                        <tr>
+                            <td class="fonte12 pd-10 txt-c"><?= ucwords(strtolower($caixa->ABERTOPOR)); ?></td>
+                            <td class="fonte12 pd-10 txt-c"><?= $caixa->DATAABERTURA; ?></td>
+                            <td class="fonte12 pd-10 txt-c"><?= $caixa->DATAFECHAMENTO; ?></td>
+                            <td class="fonte12 pd-10 txt-c"><?= $caixa->SALDOINICIAL; ?></td>
+                            <td class="fonte12 pd-10 txt-c"><?= $caixa->STATUS; ?></td>
 
-        
-        ?>
+                            <td class="txt-c">
+                                <a href="/fechar-caixa/<?= $caixa->CODIGO; ?>">
+                                    <i class="fa-solid fa-money-check-dollar fonte16 mg-r-2 fnc-primario"></i>
+                                </a>
+                                <a href="/historico-caixas">
+                                    <i class="fa-solid fa-circle-info fonte16 mg-r-2 fnc-error"></i>
+                                </a>
+                            </td>
+                        </tr>
+            <?php
+                    endif;
+                endforeach;
+            endif; ?>
         </tbody>
     </table>
 </div>
