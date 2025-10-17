@@ -120,9 +120,15 @@ class CarrinhoController extends BaseController
      ************************************ */
     public function finalizarVenda()
     {
-        if (!isset($_SESSION)):
+        // echo "Entrou no método finalizarVenda";
+        // var_dump($_POST, $_SESSION);
+        // exit;
+        // if (!isset($_SESSION)):
+        // session_start();
+        // endif;
+        if (session_status() === PHP_SESSION_NONE) {
             session_start();
-        endif;
+        }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST'):
             header("location: /");
@@ -171,18 +177,20 @@ class CarrinhoController extends BaseController
             'itensvenda' => $itensVenda
         ];
 
-        $valorRecebido = isset($_POST['valorRecebido']) ? (float) $_POST['valorRecebido'] : 0.0;
+        $valorRecebido = isset($_POST['valorRecebido']) && $_POST['valorRecebido'] !== '' ? (float) $_POST['valorRecebido'] : $total;
         $idPagamentoDinheiro = 1; // ajuste conforme o ID real no banco        
         $troco = 0.0;
 
         if ((int) $formaPagamento === $idPagamentoDinheiro):
             if ($valorRecebido <= 0) :
-                $this->loginError("Informe o valor recebido em dinheiro.");
+                // $this->loginError("Informe o valor recebido em dinheiro.");
+                echo 'erro soso2';
                 return;
             endif;
 
             if ($valorRecebido < $total) :
-                $this->loginError("Valor recebido é menor que o total da compra.");
+                // $this->loginError("Valor recebido é menor que o total da compra.");
+                echo 'erro soso';
                 return;
             endif;
 
@@ -204,4 +212,4 @@ class CarrinhoController extends BaseController
             $this->loginError("Erro ao finalizar a venda: " . $e->getMessage());
         }
     }
-}// classe
+}

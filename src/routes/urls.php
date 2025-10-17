@@ -74,6 +74,6 @@ Router::add("GET", "/relatorios/gerar", RelatorioController::class, "gerarRelato
 Router::add("GET", "/abrir-caixa", CaixaController::class, "abrirCaixa");
 Router::add("POST", "/abrir-caixa", CaixaController::class, "abrirCaixa");
 Router::add("GET", "/listar-caixas", CaixaController::class, "listarCaixa");
-Router::add("GET", "/fechar-caixa/{id}", CaixaController::class, "fecharrCaixa");
+Router::add("GET", "/fechar-caixa/{id}", CaixaController::class, "fecharCaixa");
 Router::add("POST", "/fechar-caixa", CaixaController::class, "fecharCaixa");
 Router::add("GET", "/historico-caixa", CaixaController::class, "historicoCaixa");

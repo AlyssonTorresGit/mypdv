@@ -67,7 +67,23 @@
         </div>
 
         <div class="right-painel bg-primario">
+            <div class="box-12 flex justify-between item-centro bg-branco pd-5  ">
+                <a href="" class="fnc-secundario fnc-branco-hover">
+                    <i class="fa-solid fa-cash-register fonte14 fnc-secundario fnc-branco-hover"></i>
+                    <span>Caixa 01</span>
+                </a>
+                <a href="#" class="block fnc-secundario txt-d fnc-branco-hover">
+                    <i class="fa-solid fa-cash-register fonte14 fnc-secundario fnc-branco-hover"></i>
+                    <span>Caixa: Aberto</span>
+                </a>
+
+                <a href="#" class="block fnc-secundario txt-d fnc-branco-hover">
+                    <i class="fas fa-user fonte14 fnc-secundario fnc-branco-hover"></i>
+                    <span><?= ucfirst($_SESSION['nome']) ?? $naologado ?></span>
+                </a>
+            </div>
             <div class="box">
+
                 <div class="total mg-b-4 bg-branco poppins-black"> R$ <?= number_format($total, 2, ',', '.') ?> </div>
                 <h3 class="fonte16 fnc-branco txt-c">Atalhos úteis</h3>
                 <div class="atalhos flex justify-center mg-b-4">

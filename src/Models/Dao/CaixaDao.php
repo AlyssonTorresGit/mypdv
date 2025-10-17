@@ -4,6 +4,7 @@ namespace App\Models\Dao;
 
 use App\core\Contexto;
 use App\Models\Caixa;
+use App\Models\Movimentacao;
 use PDO;
 
 class CaixaDao extends Contexto
@@ -16,8 +17,8 @@ class CaixaDao extends Contexto
     {
         $sql = "SELECT C.ID AS CODIGO,
                         U.NOME AS ABERTOPOR,
-                        DATE_FORMAT (C.DATAABERTURA, '%d/%m/%Y %H:%i:%s') AS DATAABERTURA,
-                        DATE_FORMAT (C.DATAFECHAMENTO, '%d/%m/%Y %H:%i:%s') AS DATAFECHAMENTO,
+                        DATE_FORMAT(C.DATAABERTURA, '%d/%m/%Y %H:%i:%s') AS DATAABERTURA,
+                        DATE_FORMAT(C.DATAFECHAMENTO, '%d/%m/%Y %H:%i:%s') AS DATAFECHAMENTO,
                         FORMAT(C.SALDOINICIAL, 2, 'pt_BR') AS SALDOINICIAL,
                         FORMAT(C.SALDOFINAL, 2, 'pt_BR') AS SALDOFINAL,
                         C.STATUS,
@@ -40,6 +41,18 @@ class CaixaDao extends Contexto
         $atributos = array_keys($caixa->atributosPreenchidos());
         $valores = array_values($caixa->atributosPreenchidos());
         return $this->inserir('CAIXA', $atributos, $valores);
+    }
+    public function alterar(Caixa $caixa)
+    {
+        $atributos = array_keys($caixa->atributosPreenchidos());
+        $valores = array_values($caixa->atributosPreenchidos());
+        return $this->atualizar('CAIXA', $atributos, $valores, $caixa->getId());
+    }
+    public function fecharCaixa(Movimentacao $mov)
+    {
+        $atributos = array_keys($mov->atributosPreenchidos());
+        $valores = array_values($mov->atributosPreenchidos());
+        return $this->inserir('MOVIMENTACAO', $atributos, $valores);
     }
     public function validarCaixa($id)
     {

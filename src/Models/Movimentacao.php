@@ -2,26 +2,23 @@
 
 namespace App\Models;
 
-class Caixa
+class Movimentacao
 {
     private ?string $id;
+    private ?string $caixa;
     private ?string $usuario;
-    private ?string $dataabertura;
+    private ?string $totalfechamento;
     private ?string $datafechamento;
-    private ?string $saldoinicial;
-    private ?string $saldofinal;
-    private ?string $status;
 
-    public function __construct(?string  $id, string $usuario,  string $datafechamento, string $saldoinicial, string $saldofinal, string $status)
+
+    public function __construct(?string  $id, string $caixa, string $usuario,  string $totalfechamento)
     {
         date_default_timezone_set('America/Sao_paulo');
         $this->id = $id;
+        $this->caixa = $caixa;
         $this->usuario = $usuario;
-        $this->dataabertura = date('Y-m-d H:i:s');
-        $this->datafechamento = $datafechamento ?? date('Y-m-d H:i:s');
-        $this->saldoinicial = $saldoinicial;
-        $this->saldofinal = $saldofinal;
-        $this->status = $status;
+        $this->totalfechamento = $totalfechamento;
+        $this->datafechamento = date('Y-m-d H:i:s');
     }
     public function getId()
     {
@@ -41,13 +38,10 @@ class Caixa
     {
         return  [
             "id" => $this->id,
+            "caixa" => $this->caixa,
             "usuario" => $this->usuario,
-            "dataabertura" => $this->dataabertura,
+            "totalfechamento" => $this->totalfechamento,
             "datafechamento" => $this->datafechamento,
-            "saldoinicial" => $this->saldoinicial,
-            "saldofinal" => $this->saldofinal,
-            "status" => $this->status,
-
         ];
     }
     public function atributosPreenchidos()
