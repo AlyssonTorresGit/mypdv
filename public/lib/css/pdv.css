@@ -1,0 +1,100 @@
+body {
+  background: linear-gradient(145deg, #0a0f1f, #13203b);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  height: 100vh;
+}
+
+.main-bg {
+  min-height: 100vh;
+}
+
+.pdv-container {
+  height: calc(100vh - 2rem);
+}
+
+/* Painel esquerdo */
+.painel-esquerdo {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.input-busca {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #fff;
+  font-style: italic;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.input-busca::placeholder {
+  color: #ddd;
+}
+
+.campo-dark {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.campo-dark:focus {
+  outline: 2px solid #2b6cb0;
+  box-shadow: 0 0 10px #2b6cb0;
+}
+
+.tabela-cabecalho {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.painel-produtos {
+  height: 60%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Painel lateral */
+.painel-lateral {
+  width: 340px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+}
+
+.caixa-total,
+.caixa-desconto {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.btn-dark-dark {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.btn-dark-dark:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary {
+  background: #2563eb;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+.text-light-50 {
+  opacity: 0.7;
+}
