@@ -78,7 +78,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->adicionarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuario");
+        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuarios");
     }
 
     // Função responsável por alterar os dados de um usuário
@@ -91,7 +91,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->alterarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success(" alterado com sucesso!", "/listar-usuario");
+        echo $this->Success(" alterado com sucesso!", "/listar-usuarios");
     }
 
     // Confirmação de exclusão de usuário
