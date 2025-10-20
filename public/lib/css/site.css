@@ -105,8 +105,30 @@ gap: 15px;
   border: none;
 }
 .atalhos, .acoes{
+  display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  flex-wrap: wrap;        /* permite quebrar linha */
+  justify-content: center;
   padding: 20px;
   margin-bottom: 40px;
+  max-width: 500px; 
+}
+.atalhos button {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 10px;
+  min-width: 80px;
+  min-height: 50px;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.atalhos button:hover {
+  background: #e5e5e5;
+  transform: translateY(-3px);
 }
 /* ================================
              MODAL PDV  
